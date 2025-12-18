@@ -64,7 +64,7 @@ type NetworkSettings = {
 };
 
 // UPDATE THESE WITH YOUR DEPLOYED CONTRACT DETAILS
-const CONTRACT_ADDRESS = "SP1WEKNK5SGNTYM0J8M34FMBM7PTRJSYRWY9C1CGR"; // Update after deployment
+const CONTRACT_ADDRESS = "SP1GNDB8SXJ51GBMSVVXMWGTPRFHGSMWNNBEY25A4"; // Your deployed address
 const CONTRACT_NAME = "trustbox";
 
 // Function names in trustbox.clar
@@ -514,12 +514,8 @@ async function runCreateMode(
           senderAddress,
           escrowId
         );
-        console.log(
-          `Escrow #${escrowId} info (read-only): ${escrowInfo}`
-        );
-        console.log(
-          `Escrow #${escrowId} status (read-only): ${escrowStatus}`
-        );
+        console.log(`Escrow #${escrowId} info (read-only): ${escrowInfo}`);
+        console.log(`Escrow #${escrowId} status (read-only): ${escrowStatus}`);
       } catch (re) {
         console.warn(
           `Warning: failed to read escrow info:`,
@@ -571,7 +567,9 @@ async function runApproveMode(
       const nextId = parseInt(nextIdStr.replace(/[^0-9]/g, "")) || 0;
 
       if (nextId === 0) {
-        console.log("No escrows exist yet. Create one first with --mode=create");
+        console.log(
+          "No escrows exist yet. Create one first with --mode=create"
+        );
         break;
       }
 
@@ -690,7 +688,9 @@ async function runCancelMode(
       const nextId = parseInt(nextIdStr.replace(/[^0-9]/g, "")) || 0;
 
       if (nextId === 0) {
-        console.log("No escrows exist yet. Create one first with --mode=create");
+        console.log(
+          "No escrows exist yet. Create one first with --mode=create"
+        );
         break;
       }
 
@@ -701,9 +701,7 @@ async function runCancelMode(
       console.log(`Escrow #${escrowId} current status: ${status}`);
 
       if (!status.includes("pending")) {
-        console.log(
-          `Escrow #${escrowId} is not pending, cannot cancel`
-        );
+        console.log(`Escrow #${escrowId} is not pending, cannot cancel`);
         break;
       }
 
@@ -846,17 +844,10 @@ async function runFullMode(
           senderAddress,
           escrowId
         );
-        console.log(
-          `Escrow #${escrowId} info (read-only): ${escrowInfo}`
-        );
-        console.log(
-          `Escrow #${escrowId} status (read-only): ${escrowStatus}`
-        );
+        console.log(`Escrow #${escrowId} info (read-only): ${escrowInfo}`);
+        console.log(`Escrow #${escrowId} status (read-only): ${escrowStatus}`);
       } catch (e) {
-        console.warn(
-          `Warning: failed to create escrow:`,
-          (e as Error).message
-        );
+        console.warn(`Warning: failed to create escrow:`, (e as Error).message);
       }
     } else if (actionIndex === 2) {
       // Check escrow status
@@ -877,9 +868,7 @@ async function runFullMode(
             senderAddress,
             lastEscrowId
           );
-          console.log(
-            `Latest escrow (#${lastEscrowId}) info: ${escrowInfo}`
-          );
+          console.log(`Latest escrow (#${lastEscrowId}) info: ${escrowInfo}`);
           console.log(
             `Latest escrow (#${lastEscrowId}) status: ${escrowStatus}`
           );
@@ -979,4 +968,3 @@ main().catch((err) => {
   console.error("Fatal error:", err);
   process.exit(1);
 });
-
