@@ -1,0 +1,33 @@
+
+{
+  "name": "Trustbox-contract-tests",
+  "version": "1.0.0",
+  "description": "Run unit tests on this project.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:report": "vitest run -- --coverage --costs",
+    "test:watch": "chokidar \"tests/**/*.ts\" \"contracts/**/*.clar\" -c \"npm run test:report\"",
+    "driver": "tsx x-temp/trustbox-driver.ts",
+    "driver:counter": "tsx x-temp/trustbox-driver.ts --mode=counter",
+    "driver:create": "tsx x-temp/trustbox-driver.ts --mode=create",
+    "driver:approve": "tsx x-temp/trustbox-driver.ts --mode=approve",
+    "driver:cancel": "tsx x-temp/trustbox-driver.ts --mode=cancel",
+    "driver:full": "tsx x-temp/trustbox-driver.ts --mode=full --fast"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@stacks/clarinet-sdk": "^3.9.0",
+    "@stacks/network": "^7.2.0",
+    "@stacks/transactions": "^7.2.0",
+    "@stacks/wallet-sdk": "^7.2.0",
+    "@types/node": "^24.4.0",
+    "chokidar-cli": "^3.0.0",
+    "toml": "^3.0.0",
+    "tsx": "^4.7.0",
+    "vitest": "^4.0.7",
+    "vitest-environment-clarinet": "^3.0.0"
+  }
+}
